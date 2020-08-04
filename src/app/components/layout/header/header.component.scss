@@ -1,0 +1,63 @@
+#topbar {
+  height: 50px;
+  background-color: black;
+}
+svg {
+  width: 20px;
+  height: 20px;
+}
+
+.header-menu {
+  .header-menu-navbar {
+    height: 100px;
+    display: flex;
+    width: 88%;
+    margin: 0 auto;
+    .header-left {
+      display: flex;
+      flex: 3;
+      .logo {
+        display: flex;
+        align-items: center;
+        flex: 1;
+      }
+      .primary-menu {
+        flex: 9;
+        .menu-list {
+          display: flex;
+          height: 100%;
+          align-items: center;
+          li {
+            padding: 0 20px;
+          }
+        }
+      }
+    }
+    .header-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      span {
+        padding-left: 10px;
+        .counter {
+          font-size: 0.6875rem;
+          font-weight: 500;
+          color: #fff;
+          text-align: center;
+          line-height: 11px;
+          min-width: 18px;
+          height: 18px;
+          border-radius: 9px;
+          padding: 4px;
+          margin-left: 2px;
+          background: #161619;
+          display: inline-block;
+        }
+      }
+      .header-account {
+        padding: 0 20px;
+      }
+    }
+  }
+}

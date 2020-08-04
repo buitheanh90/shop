@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  src: url(./assets/fonts/Quicksand-VariableFont_wght.ttf);
+  font-family: Quicksand;
+}
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+.wrapper {
+  padding: 0;
+}
+.container-content {
+  width: 88%;
+  margin: 0 auto;
+}
+img {
+  width: 100%;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+a {
+  color: #000;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.flex-center-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-custom {
+  padding: 13px 29px;
+  color: #2091f9;
+  letter-spacing: 0.05em;
+  border: 1px solid #2091f9;
+  background-image: linear-gradient(30deg, #fff 50%, transparent 0);
+  background-size: 850px;
+  background-repeat: no-repeat;
+  background-position: 0;
+  transition: 0.3s ease-in-out;
+  border-radius: 0;
+  opacity: 0.8;
+  &:hover {
+    background-position: 100%;
+    color: #2091f9;
+    font-weight: bold;
+  }
+}
