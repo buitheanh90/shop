@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="container-content">
+    <div class="row justify-content-center">
+      <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6">
+        <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" attr.data-slide-to="{{ i }}"
+              *ngFor="let image of product.images; let i = index  let f = first" [class.active]="f === true">
+              <img src="{{ image.url }}" alt="">
+            </li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let image of product.images; let f = first" [class.active]="f === true">
+              <img src="{{ image.url}}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6">
+        <div class="content">
+          <div class="name-title mt-3">
+            <h2>{{ product.name }}</h2>
+            <h2 class="my-5">{{  product.price | number: '1.0-3'}} đ</h2>
+            <form action="" method="post">
+              <div class="quantity-checkout">
+                <div class="quantity">
+                  <input type="button" value="-" (click)="minus()">
+                  <input type="number" name="" id="quantity" value="1" min="1" disabled [(ngModel)]="quantity"
+                    [ngModelOptions]="{standalone: true}">
+                  <input type="button" value="+" (click)="push()">
+                </div>
+                <div class="add-cart">
+                  <a class="btn-custom" href="">Thêm vào giỏ</a>
+                </div>
+              </div>
+              <div class="check-out">
+                <input type="button" class="btn-checkout" value="Mua Ngay">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
