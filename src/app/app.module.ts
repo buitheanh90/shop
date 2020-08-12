@@ -16,9 +16,12 @@ import { ProductDetailComponent } from "./components/pages/product-detail/produc
 //service
 import { ProductsService } from "./services/products.service";
 import { CategoriesService } from "./services/categories.service";
+import { CartService } from "./services/cart.service";
 
 //pipes
 import { FilterPipe } from "./pipes/filter.pipe";
+import { CartComponent } from './components/pages/cart/cart.component';
+import { ProductItemComponent } from './components/pages/products/product-item/product-item.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { FilterPipe } from "./pipes/filter.pipe";
     ProductsComponent,
     FilterPipe,
     ProductDetailComponent,
+    CartComponent,
+    ProductItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,7 @@ import { FilterPipe } from "./pipes/filter.pipe";
     BrowserAnimationsModule,
     FormsModule,
   ],
-  providers: [ProductsService, CategoriesService],
+  providers: [ProductsService, CategoriesService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Categories } from "../model/categories.class";
+import { Cart } from "../model/cart.class";
 import { Observable } from "rxjs";
 
 const httpOptions = {
@@ -10,12 +10,12 @@ const httpOptions = {
 @Injectable({
   providedIn: "root",
 })
-export class CategoriesService {
-  API: string = "/api/categories";
+export class CartService {
+  API: string = "/api/cart";
 
   constructor(private http: HttpClient) {}
 
-  getCategories(): Observable<Categories[]> {
-    return this.http.get<Categories[]>(this.API, httpOptions);
+  getCart() {
+    return this.http.get(this.API, httpOptions);
   }
 }

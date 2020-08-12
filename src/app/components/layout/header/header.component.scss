@@ -58,6 +58,181 @@ svg {
       .header-account {
         padding: 0 20px;
       }
+      .modal-content {
+        margin-top: 40px;
+        .nav {
+          margin: -1.5rem 1rem 0 1rem;
+          display: flex;
+          background: #0277bd;
+          padding: 10px;
+          border: 0;
+          border-radius: 0.25rem;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+            0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          .nav-item {
+            flex: 1;
+            border-radius: 1px;
+            a {
+              color: #fff;
+              border-radius: 3px;
+              border: none;
+              text-align: center;
+              &:hover {
+                border: none;
+              }
+            }
+            .active {
+              background-color: rgba(0, 0, 0, 0.2);
+              border: none;
+            }
+          }
+        }
+        .tab-content {
+          .modal-body {
+            .md-form {
+              position: relative;
+              i {
+                &.active {
+                  color: #4285f4;
+                }
+                &.prefix {
+                  position: absolute;
+                  transition: color 0.2s;
+                  font-size: 1.5rem;
+                  margin-bottom: 5px;
+                }
+              }
+
+              input {
+                border: none;
+                border-bottom: 1px solid #ced4da;
+                border-radius: 0;
+                margin-left: 2rem;
+                width: calc(100% - 2rem);
+                transition: boder-color 0.15;
+                &:focus {
+                  box-shadow: none;
+                  border-bottom: 2px solid #4285f4;
+                }
+              }
+              label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin-left: 2rem;
+                transition: 0.3s;
+                &.active {
+                  color: #4285f4;
+                  transform: translate(-5px, -20px) scale(0.8);
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
+}
+
+.cart-control-modal {
+  cursor: pointer;
+}
+.modal {
+  .modal-dialog-aside {
+    width: 700px;
+    max-width: 80%;
+    height: 100%;
+    margin: 0;
+    transform: translate(0);
+    transition: transform 0.2s;
+    background: #fff;
+    .modal-content {
+      border: 0;
+      border-radius: 0;
+      padding: 50px;
+      background: none;
+      height: auto;
+      background: #fff;
+      .modal-header {
+        .close {
+          font-size: 1rem;
+          cursor: pointer;
+          span {
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .modal-body {
+        overflow-y: auto;
+        .table {
+          td {
+            vertical-align: middle;
+            border-bottom: 1px dotted #dee2e6;
+            border-top: none;
+            .del-item {
+              opacity: 0.5;
+              transform: 0.2s;
+              &:hover {
+                opacity: 1;
+              }
+            }
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+
+          .img {
+            max-width: 50px;
+          }
+        }
+      }
+      .modal-footer {
+        .button {
+          padding: 19px 30px;
+          width: 48%;
+          white-space: nowrap;
+          margin-top: 10px;
+          margin-bottom: 25px;
+          text-align: center;
+        }
+        .btn-addCart {
+          background: black;
+          color: #fff;
+          border: 1px solid #000;
+          transition: 0.3s;
+        }
+        .btn-checkout {
+          color: #000;
+          font-weight: 500;
+          border: 1px solid #000;
+          transition: 0.3s;
+          &:hover {
+            background: #000;
+            color: #fff;
+          }
+        }
+        .total {
+          width: 95%;
+          margin: 30px auto;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+.modal.fixed-left .modal-dialog-aside {
+  margin-left: auto;
+  transform: translateX(100%);
+}
+.modal.fixed-right .modal-dialog-aside {
+  margin-right: auto;
+  transform: translateX(-100%);
+}
+.modal.show .modal-dialog-aside {
+  transform: translateX(0);
+}
+.fade {
+  transition: opacity 0.3s linear;
+  padding-right: 0 !important;
 }

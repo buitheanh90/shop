@@ -3,7 +3,6 @@ import { ProductsService } from "../../../services/products.service";
 import { CategoriesService } from "../../../services/categories.service";
 import { Product } from "../../../model/product.class";
 import { Categories } from "../../../model/categories.class";
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-products",
@@ -25,8 +24,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private producstService: ProductsService,
-    private categoriesService: CategoriesService,
-    private activatedRoute: ActivatedRoute
+    private categoriesService: CategoriesService
   ) {}
 
   ngOnInit() {

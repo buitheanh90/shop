@@ -9,7 +9,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./product-detail.component.scss"],
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product[];
+  product: any;
   quantity: number = 1;
 
   constructor(
