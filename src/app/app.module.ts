@@ -17,11 +17,13 @@ import { ProductDetailComponent } from "./components/pages/product-detail/produc
 import { ProductsService } from "./services/products.service";
 import { CategoriesService } from "./services/categories.service";
 import { CartService } from "./services/cart.service";
+import { SubjectService } from "./services/subject.service";
 
 //pipes
 import { FilterPipe } from "./pipes/filter.pipe";
-import { CartComponent } from './components/pages/cart/cart.component';
-import { ProductItemComponent } from './components/pages/products/product-item/product-item.component';
+import { CartComponent } from "./components/pages/cart/cart.component";
+import { ProductItemComponent } from "./components/pages/products/product-item/product-item.component";
+import { CartItemComponent } from "./components/pages/cart/cart-item/cart-item.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { ProductItemComponent } from './components/pages/products/product-item/p
     ProductDetailComponent,
     CartComponent,
     ProductItemComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { ProductItemComponent } from './components/pages/products/product-item/p
     BrowserAnimationsModule,
     FormsModule,
   ],
-  providers: [ProductsService, CategoriesService, CartService],
+  providers: [ProductsService, CategoriesService, CartService, SubjectService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -151,10 +151,10 @@
         </a>
       </span>
 
-      <span id="site-cart-handle" title="Giỏ hàng">
+      <span id="site-cart-handle">
         <!--button control cart modal-->
         <div class="cart-control-modal" data-toggle="modal" data-target="#modal_aside_right">
-          <span class="cart-menu" aria-hidden="true">
+          <span class="cart-menu" aria-hidden="true" title="Giỏ hàng">
             <svg viewBox="0 0 21.32 23.04" xmlns="http://www.w3.org/2000/svg">
               <g fill="#231f20">
                 <path
@@ -166,49 +166,117 @@
               </g>
             </svg>
           </span>
-          <span class="counter">{{ cart.totalQty ? cart.totalQty : 0 }}</span>
+          <span class="counter">{{ cartItems.totalQty ? cartItems.totalQty : 0 }}</span>
         </div>
         <!--modal cart-->
         <div id="modal_aside_right" class="modal fixed-left fade" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-dialog-aside" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Cart <p class="d-inline-block mb-0">({{ cart.totalQty ? cart.totalQty : 0 }})
+                <h5 class="modal-title">Cart <p class="d-inline-block mb-0">
+                    ({{ cartItems.totalQty ? cartItems.totalQty : 0 }})
                   </p>
                 </h5>
                 <div class="close" data-dismiss="modal" aria-label="Close">
                   <div aria-hidden="true">Close <span class="pl-0">x</span></div>
                 </div>
               </div>
-              <div class="modal-body">
-                <table class="table">
-                  <tbody>
-                    <tr *ngFor="let item of cart.cart | keyvalue">
-                      <td class="img"><img src="{{ item.value.item.images[0].url}}" alt=""></td>
-                      <td>{{ item.value.item.name }}</td>
-                      <td>Qty: {{ item.value.qty }}</td>
-                      <td>{{ item.value.price | number: '1.0-3' }}đ</td>
-                      <td><a class="del-item" href=""><svg viewBox="0 0 18 18" id="close-mini"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill="none" d="M0 0h18v18H0z"></path>
-                            <path
-                              d="M11.576 5.576L9 8.152 6.424 5.576l-.848.848L8.152 9l-2.576 2.576.848.848L9 9.848l2.576 2.576.848-.848L9.848 9l2.576-2.576z">
-                            </path>
-                            <path
-                              d="M9 1a8 8 0 100 16A8 8 0 009 1zm0 15c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z">
-                            </path>
-                          </svg></a></td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="items-false"
+                *ngIf="!cartItems.totalQty || cartItems.totalQty == 'null' || cartItems.totalQty === 0">
+                <img src="../../../../assets/images/empty-bag.svg" alt="">
+                <h2>Chưa có sản phẩm nào trong giỏ hàng</h2>
               </div>
-              <div class="modal-footer">
-                <div class="total">
-                  <strong>Tổng tiền:</strong>
-                  <span class="font-weight-bold">{{ cart.totalPrice | number: '1.0-3' }}đ</span>
+              <div class="items-true" *ngIf="cartItems.totalQty > 0">
+                <div class="modal-body">
+                  <table class="table">
+                    <tbody>
+                      <tr *ngFor="let item of cartItems.cart | keyvalue">
+                        <td class="img"><img src="{{ item.value.item.images[0].url}}" alt=""></td>
+                        <td>{{ item.value.item.name }}</td>
+                        <td>
+                          <span>Qty:</span>
+                          <div class="qty-dropdown d-inline-block">
+                            <span class="current">
+                              <span class="value">{{ item.value.qty }}</span>
+                              <span class="icon-dropdown pl-3">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                                  style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                  <g>
+                                    <g>
+                                      <path d="M506.157,132.386c-7.803-7.819-20.465-7.831-28.285-0.029l-207.73,207.299c-7.799,7.798-20.486,7.797-28.299-0.015
+			L34.128,132.357c-7.819-7.803-20.481-7.79-28.285,0.029c-7.802,7.819-7.789,20.482,0.029,28.284l207.701,207.27
+			c11.701,11.699,27.066,17.547,42.433,17.547c15.358,0,30.719-5.846,42.405-17.533L506.128,160.67
+			C513.946,152.868,513.959,140.205,506.157,132.386z" />
+                                    </g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                  <g>
+                                  </g>
+                                </svg>
+                              </span>
+                            </span>
+                            <div class="qty-options">
+                              <ul class="qty-list">
+                                <li class="qty-item" *ngFor="let number of [1,2,3,4,5]"
+                                  [ngClass]="{'active': number == item.value.qty}"><a
+                                    (click)="updateCat(item.value.item._id, number)"
+                                    [ngClass]="{'disable': number == item.value.qty}">{{ number }}</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </td>
+                        <td>{{ item.value.price | number: '1.0-3' }}đ</td>
+                        <td><a class="del-item" (click)="removeItem(item.value.item._id)" title="Xóa sản phẩm"><svg
+                              viewBox="0 0 18 18" id="close-mini" xmlns="http://www.w3.org/2000/svg">
+                              <path fill="none" d="M0 0h18v18H0z"></path>
+                              <path
+                                d="M11.576 5.576L9 8.152 6.424 5.576l-.848.848L8.152 9l-2.576 2.576.848.848L9 9.848l2.576 2.576.848-.848L9.848 9l2.576-2.576z">
+                              </path>
+                              <path
+                                d="M9 1a8 8 0 100 16A8 8 0 009 1zm0 15c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z">
+                              </path>
+                            </svg></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-                <a href="" class="button btn-checkout">MUA HÀNG</a>
-                <a href="" class="button btn-addCart">XEM GIỎ HÀNG</a>
+                <div class="modal-footer">
+                  <div class="total">
+                    <strong>Tổng tiền:</strong>
+                    <span class="font-weight-bold">{{ cartItems.totalPrice | number: '1.0-3' }}đ</span>
+                  </div>
+                  <a href="" class="button btn-checkout">MUA HÀNG</a>
+                  <a href="" class="button btn-addCart">XEM GIỎ HÀNG</a>
+                </div>
               </div>
             </div>
           </div> <!-- modal-bialog .// -->

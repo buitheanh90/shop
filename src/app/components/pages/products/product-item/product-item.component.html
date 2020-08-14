@@ -6,7 +6,7 @@
     <p>{{ productItem.name }}</p>
     <p>{{ productItem.price | number: '1.0-3'}} đ</p>
     <div class="add-cart">
-      <a [routerLink]="['/cart', productItem._id]" class="btn-add-cart">THÊM VÀO GIỎ</a>
+      <a (click)="addToCart()" class="btn-add-cart">THÊM VÀO GIỎ</a>
       <span class="mx-3">|</span>
       <a [routerLink]="['/products', productItem._id]">CHI TIẾT</a>
     </div>

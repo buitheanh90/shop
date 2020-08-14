@@ -13,7 +13,9 @@ const httpOptions = {
 })
 export class ProductsService {
   API: string = "/api/products";
-  API_CART: String = "/api/cart";
+  API_ADD_CART: String = "/api/cart/add";
+  API_DEL_CART: String = "/api/cart/delete";
+  API_UPDATE_CART: String = "/api/cart/update";
 
   constructor(private http: HttpClient) {}
 
@@ -28,7 +30,19 @@ export class ProductsService {
 
   //add to cart
   addToCart(productId: String): Observable<Cart[]> {
-    const url = `${this.API_CART}/${productId}`;
+    const url = `${this.API_ADD_CART}/${productId}`;
+    return this.http.post<Cart[]>(url, httpOptions);
+  }
+
+  //remove item from cart
+  removeCart(productId: String): Observable<Cart[]> {
+    const url = `${this.API_DEL_CART}/${productId}`;
+    return this.http.post<Cart[]>(url, httpOptions);
+  }
+
+  //update item from cart
+  updateCart(productId: String, qty: number): Observable<Cart[]> {
+    const url = `${this.API_UPDATE_CART}/${productId}${qty}`;
     return this.http.post<Cart[]>(url, httpOptions);
   }
 }
