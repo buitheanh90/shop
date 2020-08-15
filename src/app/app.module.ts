@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxPaginationModule } from "ngx-pagination";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
@@ -18,6 +18,7 @@ import { ProductsService } from "./services/products.service";
 import { CategoriesService } from "./services/categories.service";
 import { CartService } from "./services/cart.service";
 import { SubjectService } from "./services/subject.service";
+import { AuthService } from "./services/auth.service";
 
 //pipes
 import { FilterPipe } from "./pipes/filter.pipe";
@@ -45,8 +46,15 @@ import { CartItemComponent } from "./components/pages/cart/cart-item/cart-item.c
     NgxPaginationModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [ProductsService, CategoriesService, CartService, SubjectService],
+  providers: [
+    ProductsService,
+    CategoriesService,
+    CartService,
+    SubjectService,
+    AuthService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

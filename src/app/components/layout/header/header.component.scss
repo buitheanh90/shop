@@ -111,10 +111,18 @@ svg {
                 margin-left: 2rem;
                 width: calc(100% - 2rem);
                 transition: boder-color 0.15;
+                background: none;
+                z-index: 1;
+                position: relative;
+                font-size: 1rem;
                 &:focus {
                   box-shadow: none;
                   border-bottom: 2px solid #4285f4;
                 }
+              }
+              .not-user {
+                color: #cf000f;
+                font-size: 1rem;
               }
               label {
                 position: absolute;
@@ -122,6 +130,7 @@ svg {
                 left: 0;
                 margin-left: 2rem;
                 transition: 0.3s;
+                z-index: 0;
                 &.active {
                   color: #4285f4;
                   transform: translate(-5px, -20px) scale(0.8);
@@ -145,6 +154,15 @@ svg {
         }
       }
     }
+  }
+}
+.has-error {
+  p {
+    color: #cf000f;
+    margin-bottom: 0;
+  }
+  input {
+    border-bottom: 2px solid #cf000f !important;
   }
 }
 

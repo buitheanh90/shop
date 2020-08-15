@@ -8,6 +8,9 @@ $(document).ready(function () {
     .blur(function () {
       $(this).next("label").removeClass("active");
       $(this).prev("i").removeClass("active");
+      if ($(this).val()) {
+        $(this).next("label").addClass("active");
+      }
     });
 });
 

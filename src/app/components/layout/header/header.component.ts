@@ -1,9 +1,20 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "../../../services/cart.service";
 import { SubjectService } from "../../../services/subject.service";
-import { ProductsService } from "../../../services/products.service";
 import { Product } from "../../../model/product.class";
 import { Cart } from "../../../model/cart.class";
+
+//signup
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+} from "@angular/forms";
+import { User } from "../../../model/user.class";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { AuthService } from "../../../services/auth.service";
 
 @Component({
   selector: "app-header",
@@ -12,17 +23,24 @@ import { Cart } from "../../../model/cart.class";
 })
 export class HeaderComponent implements OnInit {
   cartItems: any = {};
-  changeText: boolean;
+  user: User[];
+  registered = false;
+  submitted = false;
+  userForm: FormGroup;
 
   constructor(
     private subjectService: SubjectService,
     private cartService: CartService,
-    private productsService: ProductsService
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {
     this.handleSubscription();
     this.loadCartItems();
+    this.checkInput();
   }
 
   handleSubscription() {
@@ -40,15 +58,70 @@ export class HeaderComponent implements OnInit {
 
   //remove item from cart
   removeItem(productId) {
-    this.productsService.removeCart(productId).subscribe((item) => {
+    this.cartService.removeCart(productId).subscribe((item) => {
       this.subjectService.sendMsg(item);
     });
   }
 
-  //update
+  //update cart
   updateCat(productId, qty) {
-    this.productsService.updateCart(productId, qty).subscribe((item) => {
+    this.cartService.updateCart(productId, qty).subscribe((item) => {
       this.subjectService.sendMsg(item);
     });
+  }
+
+  //check input value form
+  checkInput() {
+    this.userForm = this.formBuilder.group({
+      email: [
+        "",
+        [Validators.required, Validators.email, Validators.maxLength(75)],
+      ],
+      password: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(5),
+          // Validators.pattern(
+          // 	"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$"
+          // ),
+        ],
+      ],
+      cpassword: ["", [Validators.required]],
+    });
+  }
+
+  //validate sign up
+
+  invalidEmail() {
+    return this.submitted && this.userForm.controls.email.errors != null;
+  }
+
+  invalidPassword() {
+    return this.submitted && this.userForm.controls.password.errors != null;
+  }
+
+  invalidCPassword() {
+    return (
+      this.submitted &&
+      this.userForm.controls.cpassword.value !=
+        this.userForm.controls.password.value
+    );
+  }
+
+  onSubmit() {
+    const email = this.userForm.controls.email.value;
+    const password = this.userForm.controls.password.value;
+
+    this.submitted = true;
+    if (this.userForm.invalid == true) {
+      return;
+    } else {
+      this.auth.onSubmit(email, password).subscribe((data) => {
+        this.user = data as any;
+        console.log(data);
+      });
+      this.registered = true;
+    }
   }
 }

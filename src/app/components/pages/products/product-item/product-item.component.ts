@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Product } from "../../../../model/product.class";
-import { ProductsService } from "../../../../services/products.service";
+import { CartService } from "../../../../services/cart.service";
 import { SubjectService } from "../../../../services/subject.service";
 
 @Component({
@@ -12,14 +12,14 @@ export class ProductItemComponent implements OnInit {
   @Input() productItem: Product;
 
   constructor(
-    private producstService: ProductsService,
-    private subjectService: SubjectService
+    private subjectService: SubjectService,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {}
 
   addToCart() {
-    this.producstService.addToCart(this.productItem._id).subscribe((cart) => {
+    this.cartService.addToCart(this.productItem._id).subscribe((cart) => {
       this.subjectService.sendMsg(cart);
     });
   }

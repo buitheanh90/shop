@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductsService } from "../../../services/products.service";
+import { CartService } from "../../../services/cart.service";
 import { Product } from "../../../model/product.class";
+import { SubjectService } from "../../../services/subject.service";
 
 @Component({
   selector: "app-homepage",
@@ -10,11 +12,25 @@ import { Product } from "../../../model/product.class";
 export class HomepageComponent implements OnInit {
   product: Product[];
 
-  constructor(private producstService: ProductsService) {}
+  constructor(
+    private producstService: ProductsService,
+    private cartService: CartService,
+    private subjectService: SubjectService
+  ) {}
 
   ngOnInit() {
-    this.producstService.getProducts().subscribe((data) => {
-      this.product = data;
+    this.getAllProducts();
+  }
+
+  getAllProducts() {
+    this.producstService.getProducts().subscribe((product) => {
+      this.product = product;
+    });
+  }
+  //add item to cart
+  addToCart(idProduct) {
+    this.cartService.addToCart(idProduct).subscribe((cart) => {
+      this.subjectService.sendMsg(cart);
     });
   }
 }

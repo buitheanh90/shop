@@ -143,8 +143,8 @@
                     <div class="card-body">
                       <h4 class="card-title">{{ item.name }}</h4>
                       <p class="card-text">{{ item.price | number: '1.0-3' }} đ</p>
-                      <a class="btn btn-custom">Mua Ngay</a>
-                      <a class="btn btn-custom ml-2">Chi Tiết</a>
+                      <a class="btn btn-custom" (click)="addToCart(item._id)">Thêm vào Giỏ</a>
+                      <a [routerLink]="['/products', item._id]">Chi Tiết</a>
                     </div>
                   </div>
                 </div>
@@ -161,8 +161,8 @@
                     <div class="card-body">
                       <h4 class="card-title">{{ item.name }}</h4>
                       <p class="card-text">{{ item.price | number: '1.0-3' }} đ</p>
-                      <a class="btn btn-custom">Mua Ngay</a>
-                      <a class="btn btn-custom">Chi Tiết</a>
+                      <a class="btn btn-custom" (click)="addToCart(item._id)">Thêm vào Giỏ</a>
+                      <a class="btn btn-custom" [routerLink]="['/products', item._id]">Chi Tiết</a>
                     </div>
                   </div>
                 </div>
@@ -200,9 +200,9 @@
               <h5>{{ item.name}}</h5>
               <p>{{ item.price | number: '1.0-3' }} đ</p>
               <div class="add-cart">
-                <a href="" class="btn-add-cart">THÊM VÀO GIỎ</a>
+                <a class="btn-add-cart" (click)="addToCart(item._id)">THÊM VÀO GIỎ</a>
                 <span class="mx-3">|</span>
-                <a href="">CHI TIẾT</a>
+                <a [routerLink]="['/products', item._id]">CHI TIẾT</a>
               </div>
             </div>
           </div>
