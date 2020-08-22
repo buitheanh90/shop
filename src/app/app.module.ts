@@ -12,6 +12,12 @@ import { FooterComponent } from "./components/layout/footer/footer.component";
 import { HomepageComponent } from "./components/pages/homepage/homepage.component";
 import { ProductsComponent } from "./components/pages/products/products.component";
 import { ProductDetailComponent } from "./components/pages/product-detail/product-detail.component";
+import { CartComponent } from "./components/pages/cart/cart.component";
+import { ProductItemComponent } from "./components/pages/products/product-item/product-item.component";
+import { CartItemComponent } from "./components/pages/cart/cart-item/cart-item.component";
+import { CollectionComponent } from "./components/pages/collection/collection.component";
+import { CheckoutComponent } from "./components/pages/checkout/checkout.component";
+import { ForgotComponent } from "./components/pages/forgot/forgot.component";
 
 //service
 import { ProductsService } from "./services/products.service";
@@ -19,12 +25,11 @@ import { CategoriesService } from "./services/categories.service";
 import { CartService } from "./services/cart.service";
 import { SubjectService } from "./services/subject.service";
 import { AuthService } from "./services/auth.service";
+import { AuthGuard } from "./services/guard/auth.guard";
 
 //pipes
 import { FilterPipe } from "./pipes/filter.pipe";
-import { CartComponent } from "./components/pages/cart/cart.component";
-import { ProductItemComponent } from "./components/pages/products/product-item/product-item.component";
-import { CartItemComponent } from "./components/pages/cart/cart-item/cart-item.component";
+import { FormDirective } from "./directive/form.directive";
 
 @NgModule({
   declarations: [
@@ -38,6 +43,10 @@ import { CartItemComponent } from "./components/pages/cart/cart-item/cart-item.c
     CartComponent,
     ProductItemComponent,
     CartItemComponent,
+    FormDirective,
+    CollectionComponent,
+    CheckoutComponent,
+    ForgotComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,9 @@ import { CartItemComponent } from "./components/pages/cart/cart-item/cart-item.c
     CartService,
     SubjectService,
     AuthService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
+  exports: [FormDirective],
 })
 export class AppModule {}

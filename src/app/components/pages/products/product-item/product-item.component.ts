@@ -21,6 +21,8 @@ export class ProductItemComponent implements OnInit {
   addToCart() {
     this.cartService.addToCart(this.productItem._id).subscribe((cart) => {
       this.subjectService.sendMsg(cart);
+      //open modal
+      $("#modal_cart").modal("show");
     });
   }
 }

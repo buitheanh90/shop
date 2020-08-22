@@ -28,6 +28,9 @@
       a {
         font-weight: bold;
         cursor: pointer;
+        &:hover {
+          color: #ad8350;
+        }
       }
     }
   }

@@ -21,12 +21,23 @@ ul {
   padding: 0;
   margin: 0;
   list-style: none;
+  li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 a {
   color: #000;
+  cursor: pointer;
   &:hover {
     text-decoration: none;
   }
+}
+
+.modal-backdrop.show {
+  z-index: 0;
 }
 
 .flex-center-row {
@@ -40,6 +51,25 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.link-hover {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    width: 0;
+    border-bottom: 2px solid;
+    transition: width 0.3s;
+  }
+  &:hover {
+    &::after {
+      width: 100%;
+      left: 0;
+    }
+  }
 }
 
 .btn-custom {
@@ -59,4 +89,43 @@ a {
     color: #2091f9;
     font-weight: bold;
   }
+}
+
+.button {
+  padding: 19px 30px;
+  width: 100%;
+  white-space: nowrap;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.btn-addCart {
+  background: black;
+  color: #fff;
+  border: 1px solid #000;
+  transition: 0.2s;
+  &:hover {
+    color: #fff;
+  }
+}
+.btn-checkout {
+  color: #000;
+  font-weight: 500;
+  border: 1px solid #000;
+  transition: 0.3s;
+  &:hover {
+    background: #000;
+    color: #fff !important;
+  }
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.clearfix:after {
+  clear: both;
 }

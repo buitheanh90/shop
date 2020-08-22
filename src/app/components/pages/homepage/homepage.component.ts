@@ -3,6 +3,7 @@ import { ProductsService } from "../../../services/products.service";
 import { CartService } from "../../../services/cart.service";
 import { Product } from "../../../model/product.class";
 import { SubjectService } from "../../../services/subject.service";
+import * as bootstrap from "bootstrap";
 
 @Component({
   selector: "app-homepage",
@@ -31,6 +32,8 @@ export class HomepageComponent implements OnInit {
   addToCart(idProduct) {
     this.cartService.addToCart(idProduct).subscribe((cart) => {
       this.subjectService.sendMsg(cart);
+      //open modal
+      $("#modal_cart").modal("show");
     });
   }
 }

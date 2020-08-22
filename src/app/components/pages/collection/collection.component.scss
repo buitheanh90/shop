@@ -1,0 +1,27 @@
+.products-title {
+  padding-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.products-search {
+  text-align: right;
+  .search {
+    input {
+      border: none;
+      border-bottom: 1px solid #ced4da;
+      border-radius: 0;
+      outline: none;
+      transition: 0.3s;
+      width: 50%;
+      font-size: 18px;
+      font-weight: 600;
+      &:focus {
+        box-shadow: none;
+        border-bottom: 1px solid #000;
+      }
+      &:hover {
+        border-bottom: 1px solid #000;
+      }
+    }
+  }
+}

@@ -12,9 +12,6 @@ const httpOptions = {
 })
 export class ProductsService {
   API: string = "/api/products";
-  API_ADD_CART: String = "/api/cart/add";
-  API_DEL_CART: String = "/api/cart/delete";
-  API_UPDATE_CART: String = "/api/cart/update";
 
   constructor(private http: HttpClient) {}
 
@@ -22,8 +19,8 @@ export class ProductsService {
     return this.http.get<Product[]>(this.API, httpOptions);
   }
 
-  getProductById(_id: String): Observable<Product[]> {
-    const url = `${this.API}/${_id}`;
+  getProductById(id: String): Observable<Product[]> {
+    const url = `${this.API}/${id}`;
     return this.http.get<Product[]>(url, httpOptions);
   }
 }

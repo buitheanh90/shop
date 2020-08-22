@@ -1,0 +1,34 @@
+.container {
+  padding-top: 100px;
+  .checkout-header {
+    padding-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .checkout-body {
+    .ecommerce {
+      .check-login,
+      .check-register {
+        .control-form {
+          background: #e3e7e8;
+          text-align: center;
+          padding: 20px 0;
+          span {
+            font-size: 14px;
+          }
+          a {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
+        .collapse-login,
+        .collapse-register {
+          form {
+            margin: 10px 20px;
+          }
+        }
+      }
+    }
+  }
+}

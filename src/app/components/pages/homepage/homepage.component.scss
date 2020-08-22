@@ -6,6 +6,11 @@
 
 .home {
   .carousel-inner {
+    .carousel-item {
+      img {
+        margin-top: -100px;
+      }
+    }
     .carousel-custom {
       position: absolute;
       top: 36%;
@@ -15,17 +20,26 @@
       color: #fff;
       text-align: center;
       left: 15%;
-      h4 {
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        color: #777;
-        margin-bottom: 0;
-        margin-top: -3px;
-      }
       h1 {
-        color: black;
+        color: #fff;
         font-weight: 600;
         font-size: 60px;
+        margin-bottom: 70px;
+      }
+      a {
+        color: #000;
+        border-color: #000;
+        padding: 20px 40px;
+        font-size: 20px;
+        border: 1px solid #000;
+        margin-top: 10px;
+        background: #fff;
+        transition: 0.3s;
+        &:hover {
+          border: 1px solid #fff;
+          color: #fff;
+          background: none;
+        }
       }
     }
   }
@@ -34,16 +48,16 @@
     bottom: 0;
     right: 0;
     height: 13%;
-    width: 5%;
+    width: 7%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #000;
-    opacity: 0.7;
     z-index: 2;
-    i {
-      color: #fff;
-      font-size: 40px;
+    .arrow-next {
+      fill: #fff;
+      width: 40px;
+      transform: rotate(180deg);
     }
   }
 
@@ -81,112 +95,13 @@
   }
   .carousel {
     position: relative;
-    .left-control {
-      z-index: 20;
-      min-width: 120px;
-      max-width: 120px;
-      background: #fff;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      .left-content {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        .contact-list {
-          .addThis_item--icon {
-            position: relative;
-            display: inline-block;
-            height: 30px;
-            svg {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              width: 15px;
-              height: 15px;
-              opacity: 0.6;
-            }
-            &:hover {
-              .facebook {
-                fill: blue;
-              }
-              .instagram {
-                fill: #be505f;
-              }
-            }
-            .tooltip-text {
-              position: absolute;
-              top: 4px;
-              left: 25px;
-              z-index: 9;
-              height: 32px;
-              line-height: 26px;
-              padding: 3px 10px;
-              width: auto;
-              border-radius: 5px;
-              font-size: 11px;
-              color: #fff;
-              text-align: center;
-              white-space: nowrap;
-              cursor: pointer;
-              background-color: black;
-              opacity: 0;
-              &::before {
-                content: "";
-                width: 0;
-                height: 0;
-                border-width: 5px;
-                border-style: solid;
-                border-color: transparent black transparent transparent;
-                position: absolute;
-                right: 100%;
-                top: 0;
-                bottom: 0;
-                margin: auto;
-                transition: all 200ms linear;
-              }
-            }
-            &:hover {
-              .tooltip-text {
-                opacity: 1;
-              }
-            }
-          }
-        }
-        .scroll-down {
-          width: 50px;
-          height: 75px;
-          position: relative;
-          h4 {
-            font-size: 16px;
-            letter-spacing: 1px;
-          }
-          i {
-            position: absolute;
-            top: 20px;
-            left: 35%;
-            border-radius: 20px;
-            animation: slide 2s infinite;
-          }
-          @keyframes slide {
-            from {
-              top: 20px;
-            }
-            to {
-              top: 35px;
-            }
-          }
-        }
-      }
-    }
+    z-index: 0;
   }
 
   //collection
   .container-content {
-    margin-top: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     .overlay {
       overflow: hidden;
       &:hover {
@@ -218,6 +133,12 @@
           margin-bottom: 60px;
           margin-top: -20px;
         }
+        a {
+          font-size: 20px;
+          font-weight: 600;
+          opacity: 0.7;
+          color: #fff;
+        }
       }
       .about-content {
         height: 400px;
@@ -229,7 +150,7 @@
       .trend-content {
         position: absolute;
         top: 15%;
-        left: 5%;
+        left: 7%;
         h2 {
           font-weight: 900;
           color: white;
@@ -239,6 +160,12 @@
           display: block;
           color: white;
           margin-bottom: 60px;
+        }
+        a {
+          font-size: 20px;
+          font-weight: 600;
+          opacity: 0.7;
+          color: #fff;
         }
       }
     }
@@ -301,6 +228,74 @@
                 opacity: 0.5;
               }
             }
+          }
+        }
+        .carousel-inner {
+          .carousel-item {
+            a {
+              text-transform: uppercase;
+              font-weight: 600;
+            }
+            img {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  //parallax
+  .products-sale {
+    position: relative;
+    background: url("../../../../assets/images/parallax.jpg");
+    height: 600px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    .title {
+      height: 70%;
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      color: #fff;
+      .text-line {
+        .line {
+          display: inline-block;
+          width: 20px;
+          border-bottom: 2px solid;
+          vertical-align: middle;
+          position: relative;
+          top: -1px;
+        }
+        .text {
+          margin-left: 10px;
+          text-transform: uppercase;
+        }
+      }
+      h2 {
+        font-size: 50px;
+      }
+      .see-more {
+        color: #fff;
+        font-size: 20px;
+        position: relative;
+        //margin-bottom: 20px;
+        &::after {
+          content: "";
+          border-bottom: 2px solid;
+          position: absolute;
+          bottom: -5px;
+          width: 20px;
+          transition: 0.4s;
+          display: inline-block;
+          left: 0;
+        }
+        &:hover {
+          &::after {
+            width: 100%;
           }
         }
       }

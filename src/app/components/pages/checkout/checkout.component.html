@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="checkout-header">
+    <h1>Thanh toán</h1>
+  </div>
+  <div class="checkout-body">
+    <div class="ecommerce" *ngIf="!member">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 px-0">
+          <div class="check-login">
+            <div class="control-form">
+              <span>Chương trình khách hàng thân thiết </span>
+              <a id="btn-collapse-login">Đăng nhập</a>
+            </div>
+            <div class="collapse-login" id="collapse-login" style="display: none;">
+              <form class="login" [formGroup]="userLogin">
+                <div class="md-form form-sm mb-5">
+                  <i class="fa fa-envelope prefix" aria-hidden="true"></i>
+                  <input type="email" formControlName="email" class="form-control form-control-sm validate">
+                  <label data-error="wrong" data-success="right">Tên đăng nhập</label>
+                </div>
+
+                <div class="md-form form-sm mb-4">
+                  <i class="fa fa-lock prefix" aria-hidden="true"></i>
+                  <input type="password" formControlName="password" class="form-control form-control-sm validate">
+                  <label data-error="wrong" data-success="right">Mật khẩu</label>
+                </div>
+                <div class="mt-5">
+                  <button type="submit" class="button btn-addCart btn-login" (click)="onLogin()">ĐĂNG NHẬP</button>
+                </div>
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 px-0">
+          <div class="check-register">
+            <div class="control-form">
+              <span>Đăng ký để nhận nhiều ưu đãi </span>
+              <a id="btn-collapse-register" class=""> Đăng Ký</a>
+            </div>
+            <div class="collapse-register" id="collapse-register" style="display: none;">
+              <form class="login" id="register">
+                <div class="md-form form-sm mb-5">
+                  <i class="fa fa-envelope prefix" aria-hidden="true"></i>
+                  <input type="email" class="form-control form-control-sm validate">
+                  <label data-error="wrong" data-success="right">Tên đăng nhập</label>
+                </div>
+
+                <div class="md-form form-sm mb-4">
+                  <i class="fa fa-lock prefix" aria-hidden="true"></i>
+                  <input type="password" class="form-control form-control-sm validate">
+                  <label data-error="wrong" data-success="right">Mật khẩu</label>
+                </div>
+                <div class="mt-5">
+                  <button type="submit" class="button btn-addCart btn-login">ĐĂNG NHẬP</button>
+                </div>
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="info-checkout">
+        <div class="info-header">
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
