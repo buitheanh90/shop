@@ -246,11 +246,13 @@
         <div class="dropdown">
           <span type="button" class="dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-            {{ member }}
+            {{ member.name }}
           </span>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-            <a class="dropdown-item" href="#"><i class="fa fa-id-card-o" aria-hidden="true"></i> Thông tin tài khoản</a>
-            <a class="dropdown-item" href="#" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng
+            <a class="dropdown-item" [routerLink]="['/my-account', member.id]"><i class="fa fa-id-card-o"
+                aria-hidden="true"></i> Thông tin tài
+              khoản</a>
+            <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng
               xuất </a>
           </div>
         </div>
@@ -423,7 +425,7 @@
               </g>
             </svg>
           </span>
-          <span class="counter">{{cartItems.totalQty || 0 }}</span>
+          <span class="counter">{{cartItems?.totalQty || 0 }}</span>
         </div>
         <!--modal cart-->
         <div id="modal_cart" class="modal fixed-left fade" tabindex="-1" role="dialog">
@@ -431,14 +433,14 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Cart <p class="d-inline-block mb-0">
-                    ({{ cartItems.totalQty || 0 }})
+                    ({{ cartItems?.totalQty || 0 }})
                   </p>
                 </h5>
                 <div class="close" data-dismiss="modal" aria-label="Close">
                   <div aria-hidden="true">Close <span class="pl-0">x</span></div>
                 </div>
               </div>
-              <ng-container *ngIf="!cartItems.cart || cartItems.totalQty === 0; else isItem">
+              <ng-container *ngIf="!cartItems?.cart || cartItems.totalQty === 0; else isItem">
                 <div class="items-false">
                   <img src="../../../../assets/images/empty-bag.svg" alt="">
                   <h2>Chưa có sản phẩm nào trong giỏ hàng</h2>

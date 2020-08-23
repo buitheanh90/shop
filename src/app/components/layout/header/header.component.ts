@@ -5,6 +5,7 @@ import { Product } from "../../../model/product.class";
 import { Categories } from "../../../model/categories.class";
 import { CategoriesService } from "../../../services/categories.service";
 import { Cart } from "../../../model/cart.class";
+import { AuthService } from "../../../services/auth.service";
 import * as bootstrap from "bootstrap";
 
 //signup
@@ -14,7 +15,6 @@ import {
   FormControl,
   Validators,
 } from "@angular/forms";
-import { AuthService } from "../../../services/auth.service";
 
 @Component({
   selector: "app-header",
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   cartItems: any = {};
   user: any;
 
-  member: String;
+  member: any;
   err: number = 0;
   message_err: any;
 
@@ -157,7 +157,9 @@ export class HeaderComponent implements OnInit {
           //save user to localstorage
           const index = user.email.indexOf("@");
           const displayName = user.email.slice(0, index);
-          localStorage.setItem("user", displayName);
+          const idUser = user._id;
+          const userSession = { name: displayName, id: idUser };
+          localStorage.setItem("user", JSON.stringify(userSession));
           this.subjectService.sendMsg(user);
 
           //close modal
@@ -186,7 +188,7 @@ export class HeaderComponent implements OnInit {
 
   checkLogin() {
     if (localStorage.getItem("user")) {
-      this.member = localStorage.getItem("user");
+      this.member = JSON.parse(localStorage.getItem("user"));
     }
   }
 
@@ -220,7 +222,9 @@ export class HeaderComponent implements OnInit {
           //save user to localstorage
           const index = user.email.indexOf("@");
           const displayName = user.email.slice(0, index);
-          localStorage.setItem("user", displayName);
+          const idUser = user._id;
+          const userSession = { name: displayName, id: idUser };
+          localStorage.setItem("user", JSON.stringify(userSession));
           this.subjectService.sendMsg(user);
 
           //close modal

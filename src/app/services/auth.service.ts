@@ -9,23 +9,29 @@ const options = { responseType: "text" as "json" };
   providedIn: "root",
 })
 export class AuthService {
-  API_LOGIN: string = "/api/users/login";
-  API_REGISTER: string = "/api/users/signup";
+  API: string = "/api/users";
 
   constructor(private http: HttpClient) {}
 
   onLogin(email, password): Observable<User[]> {
-    return this.http.post<User[]>(this.API_LOGIN, { email, password }, options);
+    const URL_LOGIN = this.API + "/login";
+    return this.http.post<User[]>(URL_LOGIN, { email, password }, options);
   }
 
   onRegister(email, password) {
+    const URL_REGISTER = this.API + "/signup";
     return this.http.post<User>(
-      this.API_REGISTER,
+      URL_REGISTER,
       {
         email,
         password,
       },
       options
     );
+  }
+
+  onInfoUser(userId: String) {
+    const URL_INFO = this.API + `/${userId}`;
+    return this.http.get(URL_INFO, options);
   }
 }

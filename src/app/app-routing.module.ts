@@ -7,6 +7,7 @@ import { CartComponent } from "./components/pages/cart/cart.component";
 import { CollectionComponent } from "./components/pages/collection/collection.component";
 import { CheckoutComponent } from "./components/pages/checkout/checkout.component";
 import { ForgotComponent } from "./components/pages/forgot/forgot.component";
+import { InfoComponent } from "./components/pages/info/info.component";
 import { AuthGuard } from "./services/guard/auth.guard";
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: "checkout",
     component: CheckoutComponent,
+  },
+  {
+    path: "my-account/:id",
+    component: InfoComponent,
   },
   {
     path: "forgotpw",

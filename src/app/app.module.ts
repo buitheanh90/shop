@@ -18,6 +18,7 @@ import { CartItemComponent } from "./components/pages/cart/cart-item/cart-item.c
 import { CollectionComponent } from "./components/pages/collection/collection.component";
 import { CheckoutComponent } from "./components/pages/checkout/checkout.component";
 import { ForgotComponent } from "./components/pages/forgot/forgot.component";
+import { InfoComponent } from "./components/pages/info/info.component";
 
 //service
 import { ProductsService } from "./services/products.service";
@@ -47,6 +48,7 @@ import { FormDirective } from "./directive/form.directive";
     CollectionComponent,
     CheckoutComponent,
     ForgotComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,
