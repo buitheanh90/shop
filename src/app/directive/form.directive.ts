@@ -1,12 +1,13 @@
 import { Directive, HostListener, ElementRef } from "@angular/core";
 
 @Directive({
-  selector: "[focusLogin]",
+  selector:
+    "[focusLogin], [focusRegister], [formCheckout], [updateInfo], [resetpw], [forgotpw]",
 })
 export class FormDirective {
   constructor(private el: ElementRef) {}
 
-  @HostListener("click")
+  @HostListener("submit")
   onFormSubmit() {
     const invalidControl = this.el.nativeElement.querySelector(".ng-invalid");
 

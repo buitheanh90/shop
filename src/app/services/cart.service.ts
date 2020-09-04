@@ -24,8 +24,8 @@ export class CartService {
   }
 
   //add to cart
-  addToCart(productId: String): Observable<Cart[]> {
-    const url = `${this.API_ADD_CART}/${productId}`;
+  addToCart(productId: String, qty: number): Observable<Cart[]> {
+    const url = `${this.API_ADD_CART}/${productId}${qty}`;
     return this.http.post<Cart[]>(url, httpOptions);
   }
 

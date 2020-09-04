@@ -1,6 +1,8 @@
 .product-item {
   .images {
     position: relative;
+    max-height: 389px;
+    overflow: hidden;
     img {
       transition: 0.4s;
       &:nth-child(2) {
@@ -52,6 +54,22 @@
       box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.1);
       .add-cart {
         opacity: 1;
+      }
+    }
+  }
+}
+@media (max-width: 1199px) {
+  .product-item {
+    margin-bottom: 20px;
+    .product-summary {
+      box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.1);
+      .add-cart {
+        opacity: 1;
+      }
+    }
+    &:hover {
+      .product-summary {
+        transform: translateY(0);
       }
     }
   }

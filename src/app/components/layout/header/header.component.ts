@@ -6,6 +6,7 @@ import { Categories } from "../../../model/categories.class";
 import { CategoriesService } from "../../../services/categories.service";
 import { Cart } from "../../../model/cart.class";
 import { AuthService } from "../../../services/auth.service";
+import { Router } from "@angular/router";
 import * as bootstrap from "bootstrap";
 
 //signup
@@ -15,6 +16,7 @@ import {
   FormControl,
   Validators,
 } from "@angular/forms";
+import { from } from "rxjs";
 
 @Component({
   selector: "app-header",
@@ -40,7 +42,8 @@ export class HeaderComponent implements OnInit {
     private cartService: CartService,
     private formBuilder: FormBuilder,
     private categoriesService: CategoriesService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -99,7 +102,10 @@ export class HeaderComponent implements OnInit {
 
   checkLoginInput() {
     this.userLogin = this.formBuilder.group({
-      email: ["", Validators.required],
+      email: [
+        "",
+        [Validators.required, Validators.email, Validators.maxLength(75)],
+      ],
       password: ["", Validators.required],
     });
   }
@@ -195,7 +201,11 @@ export class HeaderComponent implements OnInit {
   logout() {
     if (localStorage.getItem("user")) {
       localStorage.removeItem("user");
-      window.location.reload();
+      //this.router.navigate(["/"]);
+      this.auth.logout().subscribe((data) => {
+        console.log(data);
+        window.location.href = "/";
+      });
     }
   }
 
@@ -208,7 +218,7 @@ export class HeaderComponent implements OnInit {
     if (this.userRegister.invalid) {
       return;
     } else {
-      this.auth.onRegister(email, password).subscribe((data) => {
+      this.auth.onRegister(email, password).subscribe(async (data) => {
         const user = JSON.parse(data as any);
 
         if (user.err) {
@@ -220,7 +230,7 @@ export class HeaderComponent implements OnInit {
         } else {
           this.user = user;
           //save user to localstorage
-          const index = user.email.indexOf("@");
+          const index = await user.email.indexOf("@");
           const displayName = user.email.slice(0, index);
           const idUser = user._id;
           const userSession = { name: displayName, id: idUser };

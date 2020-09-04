@@ -12,8 +12,15 @@ export class SubjectService {
   sendMsg(product) {
     this.subject.next(product); //Triggering an event
   }
-
   getMsg() {
+    return this.subject.asObservable();
+  }
+
+  sendInfo(info) {
+    this.subject.next(info);
+  }
+
+  getInfo() {
     return this.subject.asObservable();
   }
 }

@@ -1,61 +1,157 @@
-.carousel-indicators {
-  padding-left: 0;
-  margin-right: 0;
-  margin-left: 0;
-  bottom: -5%;
-  li {
-    text-indent: 0;
-    width: 10%;
-    height: 0;
+.container-content {
+  margin-top: 100px;
+  width: 70%;
+  .carousel-inner {
+    max-height: 764px;
+    overflow: hidden;
   }
-}
-.content {
-  width: 90%;
-  margin: 0 auto;
-  .quantity-checkout {
-    display: flex;
-    .quantity {
-      border: 1px solid #cdcfd0;
-      margin-right: 10px;
-      input {
-        border: none;
-        height: 100%;
-        background: none;
-        font-weight: bold;
-        &[type="button"] {
-          width: 30px;
-          outline: none;
+  .carousel-indicators {
+    flex-direction: column;
+    left: -20%;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    li {
+      text-indent: 0;
+      width: 10%;
+      height: 20%;
+    }
+  }
+  .content {
+    width: 90%;
+    margin: 0 auto;
+    .quantity-checkout {
+      display: flex;
+      .quantity {
+        border: 1px solid #cdcfd0;
+        margin-right: 10px;
+        input {
+          border: none;
+          height: 100%;
+          background: none;
+          font-weight: bold;
+          width: 50px;
+
+          &[type="button"] {
+            width: 30px;
+            outline: none;
+          }
+          &[type="number"] {
+            text-align: center;
+            outline: none;
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+          }
         }
-        &[type="number"] {
-          text-align: center;
+      }
+      .add-cart {
+        flex: 1;
+        input {
+          margin: 0;
+          padding: 20px 50px;
         }
       }
     }
-    .add-cart {
-      line-height: 48px;
+    .product-meta {
+      margin-top: 30px;
+      > span {
+        display: block;
+      }
+      .label {
+        min-width: 80px;
+        display: inline-block;
+        color: #838889;
+      }
+      .sku {
+        color: #000;
+      }
     }
   }
-  .check-out {
-    margin-top: 20px;
-    width: 58%;
-    .btn-checkout {
-      padding: 13px 29px;
-      color: #fff;
-      letter-spacing: 0.05em;
-      background: #fff;
-      border: 1px solid #000;
-      background-image: linear-gradient(-90deg, #000 50%, transparent 0);
-      background-size: 1200px;
-      background-repeat: no-repeat;
-      background-position: 100%;
-      transition: 0.4s ease-in-out;
-      border-radius: 0;
-      opacity: 0.8;
-      width: 100%;
-      &:hover {
-        background-position: 0;
-        color: #000;
-        font-weight: bold;
+}
+.related-product {
+  margin-top: 80px;
+  h2 {
+    margin-bottom: 30px;
+  }
+  .product-list {
+    app-product-item {
+      .item {
+        .product-item {
+          .images {
+            max-height: 310px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .container-content {
+    margin-top: 50px;
+    width: 95%;
+    .carousel-indicators {
+      position: relative;
+      left: 0;
+      transform: translateY(0);
+      align-items: center;
+      flex-direction: row;
+      li {
+        margin-right: 10px;
+      }
+    }
+    .content {
+      .name-title {
+        .my-5 {
+          margin: 2rem 0 !important;
+        }
+        .quantity-checkout {
+          flex-direction: column;
+
+          .quantity {
+            display: flex;
+            margin-right: 0;
+            margin-bottom: 20px;
+            width: 70%;
+            input {
+              flex: 1;
+              padding: 15px 0;
+              font-size: 20px;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .container-content {
+    margin-top: 100px;
+    width: 95%;
+    .carousel-indicators {
+      position: relative;
+      left: 0;
+      transform: translateY(0);
+      align-items: center;
+      flex-direction: row;
+    }
+    .quantity-checkout {
+      flex-direction: column;
+      .quantity {
+        display: flex;
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 70%;
+        input {
+          flex: 1;
+          padding: 15px 0;
+          font-size: 20px;
+          margin: auto;
+        }
       }
     }
   }

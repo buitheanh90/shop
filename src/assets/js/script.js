@@ -1,4 +1,4 @@
-//login/register
+// //login/register
 $(document).ready(function () {
   $(".validate")
     .focus(function () {
@@ -13,27 +13,13 @@ $(document).ready(function () {
       }
     });
 
-  //change login to register
-  $(".create-account").click(function (e) {
-    e.preventDefault();
-    $(this).closest(".login").hide();
-    $(this).closest(".login").next(".register").show();
-  });
-
-  //change resgiter to login
-  $(".login").click(function (e) {
-    e.preventDefault();
-    $(this).closest(".register").hide();
-    $(this).closest(".register").prev(".login").show();
-  });
-
   //click button hide error
   $("#close-login-error").click(function (e) {
     e.preventDefault();
     $(this).closest(".alert-login-error").removeClass("login-error");
   });
 
-  // carousel homepage
+  //   // carousel homepage
 
   //
   function mySlide() {
@@ -50,7 +36,8 @@ $(document).ready(function () {
   }
 
   $("#homeSlide").carousel();
-  $(document).on("click", ".carousel-control", function () {
+  $(document).on("click", ".carousel-control", function (e) {
+    e.preventDefault();
     mySlide();
   });
 
@@ -59,6 +46,36 @@ $(document).ready(function () {
   // $(".carousel-item").mouseenter(function () {
   //   clearInterval(autoSlide);
   // });
+  // });
+
+  //menu modal mobile
+});
+
+//change login to register
+$(document).on("click", ".create-account", function (e) {
+  e.preventDefault();
+  $(this).closest(".login").hide();
+  $(this).closest(".login").next(".register").show();
+});
+
+//change resgiter to login
+$(document).on("click", ".login", function (e) {
+  //e.preventDefault();
+  $(this).closest(".register").hide();
+  $(this).closest(".register").prev(".login").show();
+});
+
+//submenu mobile
+$(document).on("click", "#menu_mobile", function (e) {
+  e.preventDefault();
+  $(this).children(".sub-menu").slideToggle();
+});
+
+//menu mobile
+
+$(document).on("click", ".menu_link", function (e) {
+  e.preventDefault();
+  $("#menu_header").modal("hide");
 });
 
 //close modal cart when open page cart
@@ -97,7 +114,7 @@ $(document).on("click", ".current", function (e) {
 });
 
 $(document).on("click", function (e) {
-  e.preventDefault();
+  //e.preventDefault();
   if (!$(e.target).closest(".current").length) {
     $(".qty-options").hide();
   }
@@ -110,3 +127,23 @@ $(document).on("mouseup", ".current", function (e) {
     container.hide();
   }
 });
+
+//
+$(document)
+  .on("focus", ".form-info", function () {
+    $(this).next("label").addClass("active");
+    $(this).prev("i").addClass("active");
+  })
+  .on("blur", ".form-info", function () {
+    $(this).next("label").removeClass("active");
+    $(this).prev("i").removeClass("active");
+    if ($(this).val()) {
+      $(this).next("label").addClass("active");
+    }
+  })
+  .on("click", "#seach_header", function () {
+    $(this).next("#input_search").addClass("entry").focus();
+  })
+  .on("blur", "#input_search", function () {
+    $(this).removeClass("entry");
+  });

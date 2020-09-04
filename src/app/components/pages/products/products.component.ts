@@ -11,7 +11,7 @@ import { Categories } from "../../../model/categories.class";
 })
 export class ProductsComponent implements OnInit {
   categories: Categories[];
-  products: Product[];
+  products: any;
 
   //panigation
   itemsPerPage: number;
@@ -21,6 +21,9 @@ export class ProductsComponent implements OnInit {
   //search
   name: String;
   categorySelected: String;
+  selected: any;
+  selectAll: any;
+  search: any;
 
   constructor(
     private producstService: ProductsService,
@@ -43,14 +46,45 @@ export class ProductsComponent implements OnInit {
   getAllProducts() {
     this.producstService.getProducts().subscribe((product) => {
       this.products = product;
-      this.itemsPerPage = 12;
+      this.itemsPerPage = 16;
       this.currentPage = 1;
       this.totalItems = product.length;
     });
   }
 
+  changeCategory(e) {
+    if (this.search) {
+      this.selected = this.search.filter((x) => {
+        return x.idCat == e;
+      });
+      this.currentPage = 1;
+      this.totalItems = this.selected.length;
+    } else {
+      this.selected = this.products.filter((x) => {
+        return x.idCat == e;
+      });
+      this.totalItems = this.selected.length;
+    }
+  }
+
+  changeSearch(name) {
+    if (this.selected) {
+      this.search = this.selected.filter((x) => {
+        return x.name.toLowerCase().indexOf(name.toLowerCase()) != -1;
+      });
+      this.currentPage = 1;
+      this.totalItems = this.search.length;
+    } else {
+      this.search = this.products.filter((x) => {
+        return x.name.toLowerCase().indexOf(name.toLowerCase()) != -1;
+      });
+      this.totalItems = this.search.length;
+    }
+  }
+
   //panigation control
   pageChanged(event) {
     this.currentPage = event;
+    window.scroll(0, 0);
   }
 }

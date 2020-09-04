@@ -12,6 +12,7 @@ import * as bootstrap from "bootstrap";
 })
 export class HomepageComponent implements OnInit {
   product: Product[];
+  qty: number = 1;
 
   constructor(
     private producstService: ProductsService,
@@ -30,7 +31,7 @@ export class HomepageComponent implements OnInit {
   }
   //add item to cart
   addToCart(idProduct) {
-    this.cartService.addToCart(idProduct).subscribe((cart) => {
+    this.cartService.addToCart(idProduct, this.qty).subscribe((cart) => {
       this.subjectService.sendMsg(cart);
       //open modal
       $("#modal_cart").modal("show");

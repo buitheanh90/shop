@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import * as AOS from "aos";
 
 @Component({
   selector: "app-root",
@@ -9,4 +10,8 @@ export class AppComponent {
   title = "milcash";
 
   constructor() {}
+
+  ngOnInit() {
+    AOS.init();
+  }
 }

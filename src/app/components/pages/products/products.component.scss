@@ -7,6 +7,15 @@
       margin-bottom: 50px;
       text-align: center;
     }
+    .products-list {
+      .not-found {
+        width: 100%;
+        text-align: center;
+        p {
+          font-size: 25px;
+        }
+      }
+    }
     .products-search {
       .categories {
         .custom-select {
@@ -49,6 +58,9 @@
 .my-pagination::ng-deep .ngx-pagination {
   li {
     border: 1px solid #000;
+    a {
+      outline: none;
+    }
   }
   .pagination-previous {
     &::before {
@@ -81,4 +93,28 @@
   .current {
     background: #000 !important;
   }
+}
+@media (max-width: 575px) {
+  .container-fluid {
+    .container-content {
+      padding-top: 50px;
+      .products-title {
+        padding-top: 30px;
+        h1 {
+          font-size: 2rem;
+        }
+      }
+      .row {
+        .products-search {
+          div {
+            &.search-title {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
 }

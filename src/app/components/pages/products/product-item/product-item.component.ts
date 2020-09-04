@@ -9,7 +9,8 @@ import { SubjectService } from "../../../../services/subject.service";
   styleUrls: ["./product-item.component.scss"],
 })
 export class ProductItemComponent implements OnInit {
-  @Input() productItem: Product;
+  @Input() productItem: any;
+  qty: number = 1;
 
   constructor(
     private subjectService: SubjectService,
@@ -19,10 +20,12 @@ export class ProductItemComponent implements OnInit {
   ngOnInit() {}
 
   addToCart() {
-    this.cartService.addToCart(this.productItem._id).subscribe((cart) => {
-      this.subjectService.sendMsg(cart);
-      //open modal
-      $("#modal_cart").modal("show");
-    });
+    this.cartService
+      .addToCart(this.productItem._id, this.qty)
+      .subscribe((cart) => {
+        this.subjectService.sendMsg(cart);
+        //open modal
+        $("#modal_cart").modal("show");
+      });
   }
 }
