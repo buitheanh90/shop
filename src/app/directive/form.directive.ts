@@ -2,7 +2,7 @@ import { Directive, HostListener, ElementRef } from "@angular/core";
 
 @Directive({
   selector:
-    "[focusLogin], [focusRegister], [formCheckout], [updateInfo], [resetpw], [forgotpw]",
+    "[focusLogin], [focusRegister], [formCheckout], [updateInfo], [resetpw], [forgotpw], [addProduct], [addCategory], [admin]",
 })
 export class FormDirective {
   constructor(private el: ElementRef) {}

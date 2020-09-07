@@ -1,25 +1,9 @@
-// //login/register
 $(document).ready(function () {
-  $(".validate")
-    .focus(function () {
-      $(this).next("label").addClass("active");
-      $(this).prev("i").addClass("active");
-    })
-    .blur(function () {
-      $(this).next("label").removeClass("active");
-      $(this).prev("i").removeClass("active");
-      if ($(this).val()) {
-        $(this).next("label").addClass("active");
-      }
-    });
-
   //click button hide error
   $("#close-login-error").click(function (e) {
     e.preventDefault();
     $(this).closest(".alert-login-error").removeClass("login-error");
   });
-
-  //   // carousel homepage
 
   //
   function mySlide() {
@@ -47,9 +31,21 @@ $(document).ready(function () {
   //   clearInterval(autoSlide);
   // });
   // });
-
-  //menu modal mobile
 });
+
+//effect label inside when focus input
+$(document)
+  .on("focus", ".validate", function () {
+    $(this).next("label").addClass("active");
+    $(this).prev("i").addClass("active");
+  })
+  .on("blur", ".validate", function () {
+    $(this).next("label").removeClass("active");
+    $(this).prev("i").removeClass("active");
+    if ($(this).val()) {
+      $(this).next("label").addClass("active");
+    }
+  });
 
 //change login to register
 $(document).on("click", ".create-account", function (e) {
@@ -146,4 +142,60 @@ $(document)
   })
   .on("blur", "#input_search", function () {
     $(this).removeClass("entry");
+  });
+
+//preview image before update
+let imagesPreview = function (input, placeToInsertImagePreview) {
+  if (input.files) {
+    let filesAmount = input.files.length;
+    for (i = 0; i < filesAmount; i++) {
+      let reader = new FileReader();
+      reader.onload = function (event) {
+        $($.parseHTML("<img>"))
+          .attr("src", event.target.result)
+          .attr("style", "margin-right: 10px")
+          .attr("style", "width: 130px")
+          .appendTo(placeToInsertImagePreview);
+      };
+      reader.readAsDataURL(input.files[i]);
+    }
+  }
+};
+$(document).on("change", "#customFile", function () {
+  imagesPreview(this, "div.preview-images");
+});
+
+//click confirm delete
+$(document).on("click", "#delete", function () {
+  $(this).children("#first").hide();
+  $(this).children("#last").show();
+  $(this).next(".confirm").addClass("open");
+});
+
+//cancel delete
+$(document).on("click", "#cancel_order", function () {
+  $(this).closest(".confirm").removeClass("open");
+  $(this).closest(".confirm").prev("#delete").children("#first").show();
+  $(this).closest(".confirm").prev("#delete").children("#last").hide();
+});
+
+$(document).on("focusout", "#change_status", function () {
+  $(this).removeClass("active");
+});
+
+$(document).on("focusout", ".content", function () {
+  $(this).closest("#confirm").removeClass("open");
+});
+
+//product admin
+$(document)
+  .on("click", ".arrow", function () {
+    $(this)
+      .closest(".status-product")
+      .next("#change_status_product")
+      .addClass("open")
+      .focus();
+  })
+  .on("focusout", "#change_status_product", function () {
+    $(this).removeClass("open");
   });
