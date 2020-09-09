@@ -31,6 +31,19 @@ $(document).ready(function () {
   //   clearInterval(autoSlide);
   // });
   // });
+  //sub menu header
+  $(".products-list")
+    .hover(function () {
+      $(this).children(".sub-mega-menu").addClass("hover");
+    })
+    .mouseleave(function () {
+      $(this).children(".sub-mega-menu").removeClass("hover");
+    });
+});
+
+//close submenu when click item
+$(document).on("click", ".menu-link__sub", function () {
+  $(this).closest(".sub-mega-menu").removeClass("hover");
 });
 
 //effect label inside when focus input
@@ -139,10 +152,11 @@ $(document)
   })
   .on("click", "#seach_header", function () {
     $(this).next("#input_search").addClass("entry").focus();
-  })
-  .on("blur", "#input_search", function () {
-    $(this).removeClass("entry");
   });
+
+$(document).on("focusout", "#input_search", function (e) {
+  $(this).removeClass("entry");
+});
 
 //preview image before update
 let imagesPreview = function (input, placeToInsertImagePreview) {

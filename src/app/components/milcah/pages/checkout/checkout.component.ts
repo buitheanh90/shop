@@ -3,6 +3,7 @@ import { SubjectService } from "../../../../services/subject.service";
 import { JsonService } from "../../../../services/json.service";
 import { CartService } from "../../../../services/cart.service";
 import { TransactionService } from "../../../../services/transaction.service";
+import { AuthService } from "../../../../services/auth.service";
 import { Cart } from "../../../../model/cart.class";
 
 import {
@@ -39,7 +40,8 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private datePipe: DatePipe,
     private transactionService: TransactionService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   userLogin: FormGroup;

@@ -176,12 +176,17 @@ svg {
                 }
               }
             }
-            &:hover {
-              .sub-mega-menu {
-                opacity: 1;
-                transform: translate(0, 0);
-                pointer-events: initial;
-              }
+            // &:hover {
+            //   .sub-mega-menu {
+            //     opacity: 1;
+            //   transform: translate(0, 0);
+            //   pointer-events: initial;
+            //   }
+            // }
+            .hover {
+              opacity: 1;
+              transform: translate(0, 0);
+              pointer-events: initial;
             }
           }
         }
@@ -206,7 +211,7 @@ svg {
           top: 0;
           padding-right: 25px;
           border-color: transparent;
-          border: 0;
+
           outline: none;
           right: 0;
           left: auto;
@@ -217,6 +222,7 @@ svg {
         .entry {
           width: 350px;
           background: #fff;
+          border-bottom: 1px solid #000;
         }
         .counter {
           font-size: 0.6875rem;

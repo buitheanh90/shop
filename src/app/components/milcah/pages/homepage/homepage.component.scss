@@ -266,6 +266,7 @@
     background-attachment: fixed;
     -moz-background-size: cover;
     -webkit-background-size: cover;
+    -o-background-size: cover;
     .title {
       height: 70%;
       width: 80%;
@@ -413,6 +414,15 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .home {
+    .products-sale {
+      background-attachment: scroll;
+    }
+  }
+}
+
 @media (max-width: 575px) {
   .home {
     .carousel {

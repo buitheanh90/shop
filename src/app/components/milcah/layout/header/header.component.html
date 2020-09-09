@@ -391,7 +391,7 @@
             <a class="link-hover" [routerLink]="['/products']">Sản Phẩm</a>
             <ul class="sub-mega-menu">
               <li class="menu-item" *ngFor="let category of categories">
-                <a [routerLink]="['/collection', category._id]">
+                <a class="menu-link__sub" [routerLink]="['/collection', category._id]">
                   <img src="{{ category.image }}">
                   <p>{{ category.name }}</p>
                 </a>
@@ -691,7 +691,7 @@ S247.02,91.204,242.602,91.204z" />
             <div class="sign-up">
               <button type="button" class="button btn-checkout create-account">TẠO TÀI KHOẢN MỚI</button>
               <div class="forgot mt-4 text-center">
-                <a class="forgot-password" routerLink='forgotpw'> QUÊN MẬT KHẨU?</a>
+                <a class="forgot-password" routerLink='/forgotpw'> QUÊN MẬT KHẨU?</a>
               </div>
             </div>
           </form>
