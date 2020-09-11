@@ -133,3 +133,43 @@ a {
 .clearfix:after {
   clear: both;
 }
+
+.my-pagination::ng-deep .ngx-pagination {
+  li {
+    border: 1px solid #000;
+    a {
+      outline: none;
+    }
+  }
+  .pagination-previous {
+    &::before {
+      content: "";
+      margin-right: 0;
+      //display: initial;
+    }
+    a {
+      &::before {
+        content: "";
+        margin-right: 0;
+        //display: initial;
+      }
+    }
+  }
+  .pagination-next {
+    &::after {
+      content: "";
+      margin-left: 0;
+      display: initial;
+    }
+    a {
+      &::after {
+        content: "";
+        margin-left: 0;
+        display: initial;
+      }
+    }
+  }
+  .current {
+    background: #000 !important;
+  }
+}

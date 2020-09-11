@@ -33,7 +33,7 @@ $(document).ready(function () {
   // });
   //sub menu header
   $(".products-list")
-    .hover(function () {
+    .mouseover(function () {
       $(this).children(".sub-mega-menu").addClass("hover");
     })
     .mouseleave(function () {
