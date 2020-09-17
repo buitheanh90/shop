@@ -17,7 +17,7 @@
             <a href="" class="animate__animated animate__fadeInDown animate__delay-1s">Xem Ngay</a>
           </div>
         </div>
-        <a class="carousel-control" href="#homeSlide">
+        <a class="carousel-control" href="#homeSlide" (click)="slideImg($event)">
           <svg class="arrow-next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path
               d="M28,15H15V10a1,1,0,0,0-1.51-.86l-10,6a1,1,0,0,0,0,1.72l10,6A1,1,0,0,0,14,23a1,1,0,0,0,.49-.13A1,1,0,0,0,15,22V17H28a1,1,0,0,0,0-2ZM13,20.23,5.94,16,13,11.77Z"
@@ -141,13 +141,13 @@
   <div class="best-products">
     <div class="container-content p-4">
       <div class="row">
-        <div class="col-lg-4 col-sm-6 col-xl-3">
+        <div class="col-lg-12 col-sm-6 col-xl-3">
           <div class="title">
             <h2>Sản phẩm tốt nhất</h2>
             <p>Khám phá những sản phẩm bán chạy nhất của chúng tôi.</p>
           </div>
         </div>
-        <div class="col-6 col-lg-4 col-sm-6 mt-4 col-xl-3" *ngFor="let item of product | slice: 0:7" data-aos="fade-up">
+        <div class="col-6 col-lg-3 col-sm-6 mt-4 col-xl-3" *ngFor="let item of product | slice: 0:7" data-aos="fade-up">
           <div class="product">
             <a class="product-image d-block">
               <img [routerLink]="['/products', item._id]" *ngFor="let image of item.images" class="img-fluid"

@@ -387,7 +387,7 @@
       <nav class="primary-menu">
         <ul class="menu-list">
           <li><a class="link-hover" [routerLink]="['/']">Trang chủ</a></li>
-          <li class="products-list">
+          <li class="products-list" (mouseover)="addHover()" (mouseout)="removeHover()">
             <a class="link-hover" [routerLink]="['/products']">Sản Phẩm</a>
             <ul class="sub-mega-menu">
               <li class="menu-item" *ngFor="let category of categories">
@@ -716,7 +716,7 @@ S247.02,91.204,242.602,91.204z" />
               <i class="fa fa-lock prefix" aria-hidden="true"></i>
               <input type="password" class="form-control form-control-sm validate" formControlName="cpassword">
               <label data-error="wrong" data-success="right">Nhập lại mật khẩu</label>
-              <p *ngIf="invalidCPassword()">Invalid Confirm password.</p>
+              <p *ngIf="invalidCPassword()">Mật khẩu nhập lại không đúng.</p>
             </div>
 
             <div class="form-group text-center form-sm mt-2">

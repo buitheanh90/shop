@@ -37,4 +37,24 @@ export class HomepageComponent implements OnInit {
       $("#modal_cart").modal("show");
     });
   }
+
+  mySlide() {
+    $(".carousel-control")
+      .siblings(".active")
+      .children(".carousel-custom")
+      .slideUp();
+    setTimeout(function () {
+      $("#homeSlide").carousel("next");
+    }, 600);
+    setTimeout(function () {
+      $(".active").children(".carousel-custom").slideDown();
+    }, 1000);
+  }
+
+  slideImg(e) {
+    e.preventDefault();
+    this.mySlide();
+  }
+
+  autoSlide = setInterval(this.mySlide, 10000);
 }

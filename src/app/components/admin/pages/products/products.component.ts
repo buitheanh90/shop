@@ -86,7 +86,6 @@ export class ProductsComponent implements OnInit {
     } else {
       this.statusProduct = false;
     }
-    console.log(this.statusProduct, id);
     this.adminService
       .changeStatusProduct(this.statusProduct, id)
       .subscribe((data) => {
@@ -111,6 +110,11 @@ export class ProductsComponent implements OnInit {
     this.totalItems = this.search.length;
     this.itemsPerPage = 16;
     this.currentPage = 1;
+  }
+
+  trackById(index, item) {
+    //console.log(item._id);
+    return item._id;
   }
 
   //panigation control

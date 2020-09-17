@@ -96,6 +96,9 @@
 }
 @media (max-width: 575px) {
   .container-fluid {
+    .col-6 {
+      padding: 0 5px !important;
+    }
     .container-content {
       padding-top: 50px;
       .products-title {
@@ -111,6 +114,24 @@
               display: none;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 1199px) {
+  .container-content {
+    width: 95%;
+    .products-search {
+      .categories {
+        select {
+          width: 70%;
+        }
+      }
+      .search {
+        input {
+          width: 80%;
         }
       }
     }

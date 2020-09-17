@@ -10,6 +10,7 @@ import { AuthService } from "../../../../services/auth.service";
 import { Router } from "@angular/router";
 import { CookieService } from "angular2-cookie";
 import * as bootstrap from "bootstrap";
+import { MustMatch } from "../../../../services/must-match.validator";
 
 //signup
 import {
@@ -63,6 +64,14 @@ export class HeaderComponent implements OnInit {
     this.checkRegister();
 
     this.checkLogin();
+  }
+
+  addHover() {
+    $(".products-list").children(".sub-mega-menu").addClass("hover");
+  }
+
+  removeHover() {
+    $(".products-list").children(".sub-mega-menu").removeClass("hover");
   }
 
   handleSubscriptionCart() {
@@ -125,23 +134,28 @@ export class HeaderComponent implements OnInit {
 
   //check input register value form
   checkRegister() {
-    this.userRegister = this.formBuilder.group({
-      email: [
-        "",
-        [Validators.required, Validators.email, Validators.maxLength(75)],
-      ],
-      password: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(5),
-          // Validators.pattern(
-          // 	"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$"
-          // ),
+    this.userRegister = this.formBuilder.group(
+      {
+        email: [
+          "",
+          [Validators.required, Validators.email, Validators.maxLength(75)],
         ],
-      ],
-      cpassword: ["", [Validators.required]],
-    });
+        password: [
+          "",
+          [
+            Validators.required,
+            Validators.minLength(5),
+            // Validators.pattern(
+            // 	"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$"
+            // ),
+          ],
+        ],
+        cpassword: ["", [Validators.required]],
+      },
+      {
+        validator: MustMatch("password", "cpassword"),
+      }
+    );
   }
 
   //validate sign up

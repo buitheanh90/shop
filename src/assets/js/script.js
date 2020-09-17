@@ -1,44 +1,7 @@
-$(document).ready(function () {
-  //click button hide error
-  $("#close-login-error").click(function (e) {
-    e.preventDefault();
-    $(this).closest(".alert-login-error").removeClass("login-error");
-  });
-
-  //
-  function mySlide() {
-    $(".carousel-control")
-      .siblings(".active")
-      .children(".carousel-custom")
-      .slideUp();
-    setTimeout(function () {
-      $("#homeSlide").carousel("next");
-    }, 600);
-    setTimeout(function () {
-      $(".active").children(".carousel-custom").slideDown();
-    }, 1000);
-  }
-
-  $("#homeSlide").carousel();
-  $(document).on("click", ".carousel-control", function (e) {
-    e.preventDefault();
-    mySlide();
-  });
-
-  var autoSlide = setInterval(mySlide, 10000);
-
-  // $(".carousel-item").mouseenter(function () {
-  //   clearInterval(autoSlide);
-  // });
-  // });
-  //sub menu header
-  $(".products-list")
-    .mouseover(function () {
-      $(this).children(".sub-mega-menu").addClass("hover");
-    })
-    .mouseleave(function () {
-      $(this).children(".sub-mega-menu").removeClass("hover");
-    });
+//click close alert error
+$(document).on("click", "#close-login-error", function (e) {
+  e.preventDefault();
+  $(this).closest(".alert-login-error").removeClass("login-error");
 });
 
 //close submenu when click item

@@ -12,7 +12,10 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        loadChildren: "./components/milcah/milcah.module#MilcahModule",
+        loadChildren: () =>
+          import("./components/milcah/milcah.module").then(
+            (m) => m.MilcahModule
+          ),
       },
     ],
   },
@@ -23,7 +26,8 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        loadChildren: "./components/admin/admin.module#AdminModule",
+        loadChildren: () =>
+          import("./components/admin/admin.module").then((m) => m.AdminModule),
       },
     ],
   },

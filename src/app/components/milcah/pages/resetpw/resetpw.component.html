@@ -10,10 +10,10 @@
           <label for="password">Mật khẩu mới</label>
           <p *ngIf="invalidPassword()" id="password_error">Mật khẩu tối thiểu 5 ký tự</p>
         </div>
-        <div class="md-form form-sm mb-5" [ngClass]="{ 'has-error': invalidPassword() }">
+        <div class="md-form form-sm mb-5" [ngClass]="{ 'has-error': invalidCPassword() }">
           <input type="password" formControlName="cpassword" id="cpassword" class="form-info form-control">
           <label for="cpassword">Nhập lại mật khẩu mới</label>
-          <p *ngIf="invalidCPassword()">Mật khẩu không khớp</p>
+          <p *ngIf="invalidCPassword()">Mật khẩu nhập lại không đúng</p>
         </div>
         <div class="control">
           <button type="submit" class="button btn-addCart btn-login">GỬI</button>

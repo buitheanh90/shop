@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../../../../services/auth.service";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
+import { MustMatch } from "../../../../services/must-match.validator";
 import {
   FormBuilder,
   FormGroup,
@@ -33,10 +34,15 @@ export class ResetpwComponent implements OnInit {
   }
 
   validate() {
-    this.resetpw = this.formBuilder.group({
-      password: ["", [Validators.required, Validators.minLength(5)]],
-      cpassword: ["", [Validators.required]],
-    });
+    this.resetpw = this.formBuilder.group(
+      {
+        password: ["", [Validators.required, Validators.minLength(5)]],
+        cpassword: ["", [Validators.required]],
+      },
+      {
+        validator: MustMatch("password", "cpassword"),
+      }
+    );
   }
 
   invalidPassword() {

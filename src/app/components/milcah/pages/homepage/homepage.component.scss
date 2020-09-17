@@ -428,6 +428,13 @@
 
 @media (max-width: 575px) {
   .home {
+    .col-6 {
+      padding: 0 5px !important;
+      .card {
+        border-radius: 0;
+        border: none;
+      }
+    }
     .carousel {
       .carousel-inner {
         .carousel-item {
@@ -905,7 +912,10 @@
                   height: 242px;
                 }
                 .card-body {
-                  border-right: 1px solid #e3e7e8;
+                  //border-right: 1px solid #e3e7e8;
+                  .card-title {
+                    font-size: 1rem;
+                  }
                 }
               }
             }
@@ -916,16 +926,27 @@
     .best-products {
       .container-content {
         width: 100%;
+        .title {
+          h2 {
+            font-size: 45px;
+          }
+        }
+        .col-6 {
+          padding: 0 10px;
+        }
         .product {
           border: 1px solid #e3e7e8;
           .product-summary {
             background: #e3e7e8;
+            h5 {
+              font-size: 1rem;
+            }
             .add-cart {
               opacity: 1 !important;
             }
           }
           .product-image {
-            height: 343px;
+            height: 220px;
           }
           &:hover {
             .product-summary {

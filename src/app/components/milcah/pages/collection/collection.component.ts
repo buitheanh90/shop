@@ -10,6 +10,7 @@ import { ActivatedRoute } from "@angular/router";
 export class CollectionComponent implements OnInit {
   products: any;
   name: String;
+  categorySelected: String;
 
   itemsPerPage: number;
   currentPage: number;
