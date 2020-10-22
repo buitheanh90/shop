@@ -13,6 +13,7 @@ const options = {
 export class AdminService {
   API: string = "api/admin/";
 
+
   isSidebarPinned = false;
   isSidebarToggeled = false;
 

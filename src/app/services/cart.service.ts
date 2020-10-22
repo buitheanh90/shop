@@ -20,7 +20,7 @@ export class CartService {
 
   //get data add to cart
   getCart() {
-    return this.http.get(this.API, httpOptions);
+    return this.http.get(this.API);
   }
 
   //add to cart

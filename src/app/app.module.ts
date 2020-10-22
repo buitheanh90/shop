@@ -41,7 +41,7 @@ import { DatePipe } from "@angular/common";
     GlobalModule,
   ],
   providers: [
-    ProductsService,
+    //ProductsService,
     CategoriesService,
     CartService,
     SubjectService,

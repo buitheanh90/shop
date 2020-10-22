@@ -7,6 +7,11 @@ const httpOptions = {
   headers: new HttpHeaders().set("Content-Type", "x-www-form-urlencoded"),
 };
 
+const httpHeaders = new HttpHeaders({
+  "Content-Type": "application/json",
+  Authorization: "djidjaidjaid",
+});
+
 @Injectable({
   providedIn: "root",
 })
@@ -16,7 +21,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.API, httpOptions);
+    return this.http.get<Product[]>(this.API, { headers: httpHeaders });
   }
 
   getProductById(id: String): Observable<Product[]> {

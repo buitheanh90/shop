@@ -73,12 +73,11 @@
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
               <div class="row">
-                <div class="col-6 col-xs-12 col-md-6 col-sm-6 col-lg-3 slide-multi"
+                <div class="col-6 col-xs-12 col-md-3 col-sm-6 col-lg-3 slide-multi"
                   *ngFor="let item of product | slice: 0:4;" data-aos="zoom-in">
                   <div class="card mb-2">
-                    <div class="image">
-                      <img class="card-img-top" *ngFor="let image of item.images" src="{{ image.url }}"
-                        alt="Card image cap">
+                    <div class="image" routerLink="/products/{{ item._id }}">
+                      <img *ngFor="let image of item.images" src="{{ image.url }}" alt="Card image cap">
                     </div>
 
                     <div class="card-body">
@@ -96,11 +95,11 @@
             <div class="carousel-item">
 
               <div class="row">
-                <div class="col-6 col-xs-12 col-md-6 col-sm-6 col-lg-3 slide-multi"
+                <div class="col-6 col-xs-12 col-md-3 col-sm-6 col-lg-3 slide-multi"
                   *ngFor="let item of product | slice: 5:9;" data-aos="zoom-in">
                   <div class="card mb-2">
                     <div class="image">
-                      <img [routerLink]="['/products', item._id]" class="card-img-top" *ngFor="let image of item.images"
+                      <img [routerLink]="['/products', item._id]" *ngFor="let image of item.images"
                         src="{{ image.url }}" alt="Card image cap">
                     </div>
 
@@ -141,13 +140,13 @@
   <div class="best-products">
     <div class="container-content p-4">
       <div class="row">
-        <div class="col-lg-12 col-sm-6 col-xl-3">
+        <div class="col-lg-12 col-sm-12 col-xl-3">
           <div class="title">
             <h2>Sản phẩm tốt nhất</h2>
             <p>Khám phá những sản phẩm bán chạy nhất của chúng tôi.</p>
           </div>
         </div>
-        <div class="col-6 col-lg-3 col-sm-6 mt-4 col-xl-3" *ngFor="let item of product | slice: 0:7" data-aos="fade-up">
+        <div class="col-6 col-lg-3 col-sm-4 mt-4 col-xl-3" *ngFor="let item of product | slice: 0:7" data-aos="fade-up">
           <div class="product">
             <a class="product-image d-block">
               <img [routerLink]="['/products', item._id]" *ngFor="let image of item.images" class="img-fluid"

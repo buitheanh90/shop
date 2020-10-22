@@ -755,20 +755,12 @@
       margin-top: 50px;
       .carousel {
         .controls-top {
-          opacity: 1 !important;
-          position: relative !important;
-          width: 100% !important;
-          justify-content: flex-end !important;
-          a {
-            padding: 10px;
-          }
-          .next {
-            order: 1;
-            margin-left: 10px;
-          }
+          display: none;
         }
         .carousel-inner {
           .carousel-item {
+            display: block;
+            margin-right: 0;
             .slide-multi {
               margin-bottom: 40px;
               min-height: auto !important;
@@ -777,6 +769,20 @@
                 border: 0;
                 .image {
                   padding: 5px;
+                  max-height: 182px;
+                }
+                .card-body {
+                  .card-title {
+                    font-size: 1rem;
+                  }
+                  span {
+                    display: none;
+                  }
+                  a {
+                    &:last-child {
+                      display: none;
+                    }
+                  }
                 }
               }
             }
@@ -787,16 +793,30 @@
     .best-products {
       .container-content {
         width: 100%;
+        .col-6 {
+          padding: 0 10px !important;
+        }
         .product {
           border: 1px solid #e3e7e8;
           .product-summary {
             background: #e3e7e8;
+            h5 {
+              font-size: 1rem;
+            }
             .add-cart {
               opacity: 1 !important;
+              span {
+                display: none;
+              }
+              a {
+                &:last-child {
+                  display: none;
+                }
+              }
             }
           }
           .product-image {
-            height: 343px;
+            height: 218px;
           }
           &:hover {
             .product-summary {
@@ -806,6 +826,11 @@
             img {
               opacity: 1;
             }
+          }
+        }
+        .title {
+          h2 {
+            font-size: 2.5rem;
           }
         }
       }

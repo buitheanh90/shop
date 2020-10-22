@@ -3,6 +3,7 @@ import { TransactionService } from "../../../../../services/transaction.service"
 import { ActivatedRoute } from "@angular/router";
 import { CartService } from "../../../../../services/cart.service";
 import { SubjectService } from "../../../../../services/subject.service";
+import { concat } from "rxjs";
 
 @Component({
   selector: "app-checkout-received",
