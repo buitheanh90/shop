@@ -53,19 +53,17 @@ export class HomeComponent implements OnInit {
       labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       datasets: [
         {
-          label: "Premium",
+          label: "Population",
           data: [50, 80, 60, 120, 80, 100, 60],
-          backgroundColor: "#5b6582",
-          borderColor: "#5b6582",
-          borderWidth: 2,
+          backgroundColor: "#28d9ee",
         },
-        {
-          label: "Free",
-          data: [100, 60, 80, 50, 140, 60, 100],
-          backgroundColor: "#36a2eb",
-          borderColor: "#36a2eb",
-          borderWidth: 2,
-        },
+        // {
+        //   label: "Free",
+        //   data: [100, 60, 80, 50, 140, 60, 100],
+        //   backgroundColor: "#36a2eb",
+        //   borderColor: "#36a2eb",
+        //   borderWidth: 2,
+        // },
       ],
     },
     options: {
@@ -84,14 +82,26 @@ export class HomeComponent implements OnInit {
         ],
         xAxes: [
           {
-            barPercentage: 0.4,
+            barPercentage: 0.25,
           },
         ],
       },
-      responsive: true,
+      //responsive: true,
       legend: {
-        position: "bottom",
-        display: false,
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Title",
+        position: "left",
+      },
+      plugins: {
+        datalabels: {
+          color: "black",
+          display: true,
+          align: "center",
+          anchor: "center",
+        },
       },
     },
   };
